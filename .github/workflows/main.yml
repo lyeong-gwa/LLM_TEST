@@ -13,10 +13,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-          projectKey: lyeong-gwa_LLM_TEST      # SonarCloud 프로젝트 키
-          organization: lyeong-gwa              # SonarCloud 조직 키
-          projectName: LLM_TEST                 # 선택 사항
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
+        with:
+          projectKey: lyeong-gwa_LLM_TEST   # ✅ SonarCloud 프로젝트 키
+          organization: lyeong-gwa          # ✅ SonarCloud 조직 키
+          projectName: LLM_TEST             # 선택 사항
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
